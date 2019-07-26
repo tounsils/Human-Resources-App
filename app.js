@@ -4,8 +4,8 @@ var cors = require("cors");
 var db = require("./config/database");
 var hb = require("./config/handlebars");
 
-var users = require("./routes/users");
 var employee = require("./routes/employee");
+var users = require("./routes/users");
 
 const app = express();
 
@@ -22,10 +22,26 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
 
-app.use("/users", users);
-//Home route
-app.get('/users', (req, res) => {
+//Home 
+app.get('/', (req, res) => {
     res.render('home');
+});
+
+//about 
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+//about 
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
+
+app.use("/users", users);
+//Home users route
+app.get('/users', (req, res) => {
+    res.render('users');
 });
 
 app.use("/employee", employee);

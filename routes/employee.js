@@ -1,6 +1,6 @@
 var express = require("express");
 var employee = require("../schema/employee");
-var mongoose = require("mongoose");
+var mongooseEmployee = require("mongoose");
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ router.get("/list", (req, res, next) => {
 router.post("/add", (req, res, next) => {
 
     const employee = new employee({
-        _id: mongoose.Types.ObjectId(),
+        _id: mongooseEmployee.Types.ObjectId(),
         name: req.body.name,
         address:req.body.address,
         salary: req.body.salary

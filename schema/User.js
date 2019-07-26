@@ -1,4 +1,3 @@
-//import mongoose from "mongoose";
 var mongoose = require("mongoose")
 , Schema = mongoose.Schema;
 
@@ -9,7 +8,6 @@ const userSchema = new Schema({
     address: String,
     salary : Number
 });
-
 
 // We are using appusers collection inside 
 var UserModel = mongoose.model("appusers", userSchema);

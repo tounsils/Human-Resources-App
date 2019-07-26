@@ -72,6 +72,12 @@ This will start the node server at port 6002 and you can access the application 
 quick fix
 npm i @types/node
 
+// Replace 
+// import app from "./app"; 
+// with the following line :
+var app = require("./app");
+
+
 # `8. Committee`
 
 Meet the hr committee members - the people who work together to provide 
