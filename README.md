@@ -36,11 +36,11 @@ git push origin master
 
 git clone https://github.com/tounsils/hr
 
-Create a new repository on the command line
+### Create a new repository on the command line
 
 git init
 git add .
-git commit -m "first commit"
+git commit -m "first uploaded files"
 git remote add origin https://github.com/tounsils/hr.git
 git push -u origin master
 
