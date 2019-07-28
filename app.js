@@ -4,7 +4,7 @@ var cors = require("cors");
 var db = require("./config/database");
 var hb = require("./config/handlebars");
 
-var employee = require("./routes/employee");
+var employees = require("./routes/employees");
 var users = require("./routes/users");
 
 const app = express();
@@ -44,10 +44,10 @@ app.get('/users', (req, res) => {
     res.render('users');
 });
 
-app.use("/employee", employee);
-//employee route
-app.get('/employee', (req, res) => {
-    res.render('employee');
+app.use("/employees", employees);
+//employees route
+app.get('/employees', (req, res) => {
+    res.render('employees');
 });
 
 module.exports = app;

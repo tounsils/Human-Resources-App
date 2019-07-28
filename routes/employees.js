@@ -1,17 +1,17 @@
 var express = require("express");
-var employee = require("../schema/employee");
-var mongooseEmployee = require("mongoose");
+var Employee = require("../schema/Employee");
+var mongoose = require("mongoose");
 
 const router = express.Router();
 
-router.get("/employee", (req, res, next) => {
+router.get("/employees", (req, res, next) => {
     res.status(200).json({
-        message:"Serving employees on the Endpoint."
+        message:"Serving Employees on the Endpoint."
     });   
 });
 
 router.get("/list", (req, res, next) => {
-    employee.find({})
+    Employee.find({})
         .exec()
         .then(docs => {
             res.status(200).json({
@@ -25,8 +25,8 @@ router.get("/list", (req, res, next) => {
 
 router.post("/add", (req, res, next) => {
 
-    const employee = new employee({
-        _id: mongooseEmployee.Types.ObjectId(),
+    const employee = new Employee({
+        _id: mongoose.Types.ObjectId(),
         name: req.body.name,
         address:req.body.address,
         salary: req.body.salary
@@ -46,7 +46,7 @@ router.post("/add", (req, res, next) => {
 router.post("/delete", (req, res, next) => {
     const rid = req.body.id;
 
-    employee.findById(rid)
+    Employee.findById(rid)
         .exec()
         .then(docs => {
             docs.remove();

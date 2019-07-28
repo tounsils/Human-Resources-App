@@ -86,3 +86,4 @@ In addition, each member of the committee leads a project tracked under our Gith
 
 # `10. TODO`
 recording is only on appusers database
+users is using views/static/js/home.js

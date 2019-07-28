@@ -1,15 +1,15 @@
-var mongooseEmployee = require("mongoose")
-, Schema = mongooseEmployee.Schema;
+var mongoose = require("mongoose")
+, Schema = mongoose.Schema;
 
 
 const employeeSchema = new Schema({
-    _id: mongooseEmployee.Schema.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     name: String,
     address: String,
     salary : Number
 });
 
-// We are using employee collection inside 
-var employeeModel = mongooseEmployee.model("appemployees", employeeSchema);
+// We are using appemployees collection inside 
+var EmployeeModel = mongoose.model("appemployees", employeeSchema);
 
-module.exports = employeeModel;
+module.exports = EmployeeModel;

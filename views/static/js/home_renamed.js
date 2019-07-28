@@ -1,8 +1,10 @@
+// views/static/js/home.js
+
 $( document ).ready(function() {
 
-    //on page load keep the employee list populated------------START
+    //on page load keep the user list populated------------START
     $.ajax({
-        url: "employee/list",
+        url: "users/list",
         dataType: "json",
     })
     .done((data) => {
@@ -18,17 +20,17 @@ $( document ).ready(function() {
     });  
     //-------------------------------------------------------END
 
-    //on add employee submit the form----------------------------START
+    //on add user submit the form----------------------------START
     $("#btnSubmit").click (() => {
-        $("#addemployeeForm").submit();
+        $("#addUserForm").submit();
     });
 
-	$(document).on("submit", '#addemployeeForm', function(event) {
+	$(document).on("submit", '#addUserForm', function(event) {
 		event.preventDefault(); 
 		var $form = $(this);
 		
         $.ajax({
-            url: 'employee/add',
+            url: 'users/add',
             data: $form.serializeArray(),
             type: 'POST'
         })
@@ -38,7 +40,7 @@ $( document ).ready(function() {
                 odata.forEach(item => {
                     $('#myTable > tbody:last-child').append(getRowHtml(item));
                 });
-                $('#addemployeeForm').trigger("reset");
+                $('#addUserForm').trigger("reset");
             }
         })
         .fail((err) => {
@@ -54,7 +56,7 @@ $( document ).ready(function() {
         var row = $(this).parent().parent();
 
         $.ajax({
-            url: 'employee/delete',
+            url: 'users/delete',
             data: { id:this.id },
             type: 'POST'
         })
