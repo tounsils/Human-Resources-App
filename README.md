@@ -54,12 +54,9 @@ git push -u origin master
 To run the application, open a command prompt and navigate to project directory. Run command as
 npm start
 
-	
-npm start
 
 If you are running for the first time, then before you run the start command, initialize the project with
 npm init
-
 	
 npm init
 
@@ -85,5 +82,6 @@ guidance and future direction to the project.
 In addition, each member of the committee leads a project tracked under our Github projects.
 
 # `10. TODO`
-recording is only on appusers database
-users is using views/static/js/home.js
+users is using views/static/js/employees.js
+routes/employees.js
+edit problem

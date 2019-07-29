@@ -9,7 +9,7 @@ $( document ).ready(function() {
         if(data) {
             var odata = $.parseJSON(JSON.stringify(data.docs));
             odata.forEach(item => {
-                $('#myTable > tbody:last-child').append(getRowHtml(item));
+                $('#myTableUsers > tbody:last-child').append(getRowHtmlUsers(item));
             });
         }
     })
@@ -36,7 +36,7 @@ $( document ).ready(function() {
             if(data) {
                 var odata = $.parseJSON(JSON.stringify(data.docs));
                 odata.forEach(item => {
-                    $('#myTable > tbody:last-child').append(getRowHtml(item));
+                    $('#myTableUsers > tbody:last-child').append(getRowHtmlUsers(item));
                 });
                 $('#addUserForm').trigger("reset");
             }
@@ -48,7 +48,7 @@ $( document ).ready(function() {
     //-------------------------------------------------------END
 	   
     //on click of delete record----------------------------START
-    $(document).on("click", ".btn-del-record", function(event) { 
+    $(document).on("click", ".btn-del-recordUser", function(event) { 
 
         //identify the row which we will remove from our table.
         var row = $(this).parent().parent();
@@ -72,12 +72,12 @@ $( document ).ready(function() {
 
 });
 
-function getRowHtml(item) {
+function getRowHtmlUsers(item) {
     var thtml = getTD(item._id) 
                 + getTD(item.name) 
                 + getTD(item.address) 
                 + getTD(item.salary)
-                + getDelBtn(item._id);
+                + getDelBtnUsers(item._id);
     thtml = getTR(thtml);
     return thtml;
 }
@@ -89,6 +89,6 @@ function getTR(val) {
     return '<tr>'+ val + '</tr>';
 }
 
-function getDelBtn(val) {
-    return '<td><button type="button" id='+ val +' class="btn btn-default btn-sm btn-del-record"><span class="fa fa-trash-alt"></span> Delete </button></td>';
+function getDelBtnUsers(val) {
+    return '<td><button type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordUser"><span class="fa fa-trash-alt"></span> Delete </button></td>';
 }
