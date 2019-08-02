@@ -23,9 +23,10 @@ router.get("/list", (req, res, next) => {
         });
 });
 
-router.get("/findone", (req, res, next) => {
+router.post("/findone", (req, res, next) => {
     const rid = req.body.id;
-    console.log(rid);
+    //console.log('route/findone');
+    //console.log(rid);
     Employee.findById(rid)
         .exec()
         .then(docs => {
@@ -78,18 +79,40 @@ router.post("/delete", (req, res, next) => {
 // Update a record with id
 router.put("/update", (req, res, next) => {
     const rid = req.body.id;
-
-    Employee.findByIdAndUpdate(rid)
-        .exec()
-        .then(docs => {
-            docs.remove();
-            res.status(200).json({
-                new:true
+    //console.log($("#update_Name"));
+/*
+        // Validate Request
+        if(!req.body.content) {
+            return res.status(400).send({
+                message: "Employee content can not be empty"
             });
-        })
-        .catch(err => {
-            console.log(err)
+        }
+    
+        // Find Employee and update it with the request body
+        Employee.findByIdAndUpdate(req.body.id, {
+            name: $("#update_Name") || "Untitled Note",
+            content: req.body.content
+        }, {new: true})
+        .then(note => {
+            if(!note) {
+                return res.status(404).send({
+                    message: "Note not found with id " + req.params.noteId
+                });
+            }
+            res.send(note);
+        }).catch(err => {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Note not found with id " + req.params.noteId
+                });                
+            }
+            return res.status(500).send({
+                message: "Error updating note with id " + req.params.noteId
+            });
         });
+    
+*/
+
 });
 
 /*

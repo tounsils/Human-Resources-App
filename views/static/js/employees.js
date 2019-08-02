@@ -77,34 +77,76 @@ $( document ).ready(function() {
 
         //identify the row which we will remove from our table.
         var row = $(this).parent().parent();
-        //console.log("yes");
-///
 
-$.ajax({
-    url: 'employees/findone',
-    dataType: "json",
-})
-.done((data) => {
-    if(data) {
-        console.log(data);
-        //console.log("yes");
-        /*
-        var odata = $.parseJSON(JSON.stringify(data.docs));
-        odata.forEach(item => {
-            $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
+        $.ajax({
+            url: 'employees/findone',
+            data: { id:this.id },
+            type: 'POST'
+        })
+        .done((data) => {
+            if(data) {
+               console.log(data);
+               // read data 
+               /**/
+               var employee = JSON.parse(JSON.stringify(data))
+               // Assing existing values to the modal popup fields
+               //console.log(employee.docs.name);
+               $("#update_Name").val(employee.docs.name);
+               $("#update_Address").val(employee.docs.address);
+               $("#update_Salary").val(employee.docs.salary);
+               $("#_id").val(employee.docs._id);
+   
+               // Open modal popup
+               $("#update_employee_modal").modal("show");
+               //row.remove();
+            }
+        })
+        .fail((err) => {
+            console.log("Error");
         });
-        */
-    }
-})
-.fail((err) => {
-    console.log("Error");
-});  
 
-});
+    });
 
-///
+        ///
 
     //-------------------------------------------------------END
+
+    //on add employee submit the form----------------------------START
+    $("#btnUpdateSubmit").click (() => {
+        $("#update_employee_modal").submit();
+    });
+
+	$(document).on("submit", '#update_employee_modal', function(event) {
+		event.preventDefault(); 
+        var $form = $(this);
+        console.log('static/update');
+        //console.log($("#update_Name"));
+
+		
+        $.ajax({
+            url: 'employees/update',
+            data: $form.serializeArray(),
+            type: 'PUT'
+        })
+        .done((data) => {
+            if(data) {
+
+                console.log($("#update_Name"));
+                /*
+                var odata = $.parseJSON(JSON.stringify(data.docs));
+                odata.forEach(item => {
+                    $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
+                });
+                */
+                //$('#update_employee_modal').trigger("reset");
+            }
+        })
+        .fail((err) => {
+            console.log("Error");
+        });
+    });	  
+    //-------------------------------------------------------END
+
 
 
 function getRowHtmlEmployees(item) {
@@ -134,7 +176,7 @@ function getDelBtnEmployees(val) {
 
 // added EditBtnEmployees
 function getEditBtnEmployees(val) {
-    return '<button style="color:green" type="button" id='+ val +' class="btn btn-default btn-sm btn-edit-recordEmployee"><span class="fas fa-edit"></span> Edit </button></td>';
+    return '<button style="color:green" type="button" id='+ val +' class="btn btn-default btn-sm btn-edit-recordEmployee" data-toggle="modal"><span class="fas fa-edit"></span> Edit </button></td>';
 }
 
 
