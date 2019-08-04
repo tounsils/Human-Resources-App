@@ -79,7 +79,7 @@ $( document ).ready(function() {
         var row = $(this).parent().parent();
 
         $.ajax({
-            url: 'employees/findone',
+            url: 'employees/findOne',
             data: { id:this.id },
             type: 'POST'
         })
@@ -111,39 +111,35 @@ $( document ).ready(function() {
 
     //-------------------------------------------------------END
 
-    //on add employee submit the form----------------------------START
+    //on update employee submit the form----------------------------START
     $("#btnUpdateSubmit").click (() => {
         $("#update_employee_modal").submit();
     });
+        // console.log($('#update_Name').val());  // Working
 
-	$(document).on("submit", '#update_employee_modal', function(event) {
-		event.preventDefault(); 
-        var $form = $(this);
-        console.log('static/update');
-        //console.log($("#update_Name"));
 
-		
-        $.ajax({
-            url: 'employees/update',
-            data: $form.serializeArray(),
-            type: 'PUT'
-        })
-        .done((data) => {
-            if(data) {
+        $(document).on("submit", '#update_employee_modal', function(event) {
+            event.preventDefault(); 
+            var $form = $(this);
+            
+            $.ajax({
+                url: 'employees/add',
+                data: $form.serializeArray(),
+                type: 'POST'
+            })
+            .done((data) => {
+                if(data) {
+                    var odata = $.parseJSON(JSON.stringify(data.docs));
+                    odata.forEach(item => {
+                        $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
+                    });
+                    $('#addEmployeeForm').trigger("reset");
+                }
+            })
+            .fail((err) => {
+                console.log("Error");
+            });
 
-                console.log($("#update_Name"));
-                /*
-                var odata = $.parseJSON(JSON.stringify(data.docs));
-                odata.forEach(item => {
-                    $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
-                });
-                */
-                //$('#update_employee_modal').trigger("reset");
-            }
-        })
-        .fail((err) => {
-            console.log("Error");
-        });
     });	  
     //-------------------------------------------------------END
 
