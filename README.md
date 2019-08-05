@@ -31,7 +31,7 @@ npm start
 ## Git
 git init
 git add .
-git commit -m "Updated modified files but still problem in employee update"
+git commit -m "employee script still need to update modal table !!"
 git remote add origin https://github.com/tounsils/hr
 git push origin master
 
