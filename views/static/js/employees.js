@@ -79,7 +79,7 @@ $( document ).ready(function() {
         var row = $(this).parent().parent();
 
         $.ajax({
-            url: 'employees/findone',
+            url: 'employees/findOne',
             data: { id:this.id },
             type: 'POST'
         })
@@ -111,39 +111,67 @@ $( document ).ready(function() {
 
     //-------------------------------------------------------END
 
-    //on add employee submit the form----------------------------START
+    //on update employee submit the form----------------------------START
     $("#btnUpdateSubmit").click (() => {
         $("#update_employee_modal").submit();
     });
+        // console.log($('#update_Name').val());  // Working
 
-	$(document).on("submit", '#update_employee_modal', function(event) {
-		event.preventDefault(); 
-        var $form = $(this);
-        console.log('static/update');
-        //console.log($("#update_Name"));
 
-		
-        $.ajax({
-            url: 'employees/update',
-            data: $form.serializeArray(),
-            type: 'PUT'
-        })
-        .done((data) => {
-            if(data) {
+        $(document).on("submit", '#update_employee_modal', function(event) {
+            event.preventDefault(); 
+            var $form = $(this);
+            //console.log($form);
+            var row = $(this);
+            // how to work with jquerry modal ??
+            // ++++++++++++++++++++++++++++++++++++++
 
-                console.log($("#update_Name"));
-                /*
-                var odata = $.parseJSON(JSON.stringify(data.docs));
-                odata.forEach(item => {
-                    $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
-                });
-                */
-                //$('#update_employee_modal').trigger("reset");
-            }
-        })
-        .fail((err) => {
-            console.log("Error");
+            $.ajax({
+                url: 'employees/update',
+                data: {name: $('#update_Name').val(),
+                address: $('#update_Address').val(),
+                salary: $('#update_Salary').val(),
+                id: $('#_id').val()},
+                type: 'POST'
+            })
+            .done((data) => {
+                if(data) {
+                    console.log(data);
+                    $("#update_employee_modal").modal("hide");
+                    // reload Users by using readRecords();
+//read list **************************** START
+
+// reset table
+
+// read
+$.ajax({
+    url: "employees/list",
+    dataType: "json",
+})
+.done((data) => {
+    if(data) {
+        var odata = $.parseJSON(JSON.stringify(data.docs));
+        odata.forEach(item => {
+            $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
         });
+    }
+})
+.fail((err) => {
+    console.log("Error");
+});  
+
+
+//read list **************************** END
+
+
+                    //row.update();  // NOT Working
+                     }
+            })
+            .fail((err) => {
+                console.log("Error");
+            });
+            
+
     });	  
     //-------------------------------------------------------END
 
@@ -181,32 +209,3 @@ function getEditBtnEmployees(val) {
 
 
 });
-
-/*
-// show EditEmployee Form on EditBtnEmployees click
-app.get('/edit/(:id)', function(req, res, next){
-    req.getConnection(function(error, conn) {
-        conn.query('SELECT * FROM users WHERE id = ' + req.params.id, function(err, rows, fields) {
-            if(err) throw err
-            
-            // if user not found
-            if (rows.length <= 0) {
-                req.flash('error', 'User not found with id = ' + req.params.id)
-                res.redirect('/users')
-            }
-            else { // if user found
-                // render to views/user/edit.ejs template file
-                res.render('user/edit', {
-                    title: 'Edit User', 
-                    //data: rows[0],
-                    id: rows[0].id,
-                    name: rows[0].name,
-                    age: rows[0].age,
-                    email: rows[0].email                    
-                })
-            }            
-        })
-    })
-})
-
-*/

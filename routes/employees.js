@@ -23,9 +23,9 @@ router.get("/list", (req, res, next) => {
         });
 });
 
-router.post("/findone", (req, res, next) => {
+router.post("/findOne", (req, res, next) => {
     const rid = req.body.id;
-    //console.log('route/findone');
+    //console.log('route/findOne');
     //console.log(rid);
     Employee.findById(rid)
         .exec()
@@ -76,78 +76,30 @@ router.post("/delete", (req, res, next) => {
         });
 });
 
-// Update a record with id
-router.put("/update", (req, res, next) => {
+router.post('/update', (req, res, next) => {
     const rid = req.body.id;
-    //console.log($("#update_Name"));
-/*
-        // Validate Request
-        if(!req.body.content) {
-            return res.status(400).send({
-                message: "Employee content can not be empty"
-            });
-        }
-    
-        // Find Employee and update it with the request body
-        Employee.findByIdAndUpdate(req.body.id, {
-            name: $("#update_Name") || "Untitled Note",
-            content: req.body.content
-        }, {new: true})
-        .then(note => {
-            if(!note) {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });
-            }
-            res.send(note);
-        }).catch(err => {
-            if(err.kind === 'ObjectId') {
-                return res.status(404).send({
-                    message: "Note not found with id " + req.params.noteId
-                });                
-            }
-            return res.status(500).send({
-                message: "Error updating note with id " + req.params.noteId
-            });
-        });
-    
-*/
 
-});
-
-/*
-exports.update = (req, res) => {
-    // Validate Request
-    if(!req.body.content) {
-        return res.status(400).send({
-            message: "Note content can not be empty"
-        });
-    }
-
-    // Find note and update it with the request body
-    Note.findByIdAndUpdate(req.params.noteId, {
-        title: req.body.title || "Untitled Note",
-        content: req.body.content
-    }, {new: true})
-    .then(note => {
-        if(!note) {
-            return res.status(404).send({
-                message: "Note not found with id " + req.params.noteId
-            });
-        }
-        res.send(note);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Note not found with id " + req.params.noteId
-            });                
-        }
-        return res.status(500).send({
-            message: "Error updating note with id " + req.params.noteId
-        });
+    const Newemployee = new Employee({
+        name: req.body.name,
+        address:req.body.address,
+        salary: req.body.salary
     });
-};
+    //console.log(Newemployee);
 
-*/
+
+  Employee.findOneAndUpdate({_id: rid}, Newemployee, {useFindAndModify: false}).then(
+      () => {
+        res.status(201).json({
+          message: 'employee updated successfully!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  });    
 
 module.exports = router;
