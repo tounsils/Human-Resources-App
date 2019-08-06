@@ -8,7 +8,9 @@ $( document ).ready(function() {
     .done((data) => {
         if(data) {
             var odata = $.parseJSON(JSON.stringify(data.docs));
+            var i = 1;
             odata.forEach(item => {
+                item.row = i; i = i+1;
                 $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
             });
         }
@@ -71,12 +73,13 @@ $( document ).ready(function() {
     //-------------------------------------------------------END
 
 
-
     //on EditBtnEmployees click  ----------------------------START
     $(document).on("click", ".btn-edit-recordEmployee", function(event) { 
 
         //identify the row which we will remove from our table.
-        var row = $(this).parent().parent();
+        var row_index = $(this).parent().parent().index('tr');
+        console.log(row_index);
+        $('#modal_row').val(row_index);
 
         $.ajax({
             url: 'employees/findOne',
@@ -120,10 +123,20 @@ $( document ).ready(function() {
 
         $(document).on("submit", '#update_employee_modal', function(event) {
             event.preventDefault(); 
-            var $form = $(this);
+            //var $form = $(this);
             //console.log($form);
-            var row = $(this);
+        //identify the row which we will remove from our table.
+        //var item = $(this).parent().parent();
+
+        //console.log(item);
+
             // how to work with jquerry modal ??
+            // see https://www.codemag.com/Article/1511031/CRUD-in-HTML-JavaScript-and-jQuery
+            //productUpdateInTable(_activeId);
+
+            $(".update_employee_modal").find("#profile_mail").val("TEST_AJAX");
+
+
             // ++++++++++++++++++++++++++++++++++++++
 
             $.ajax({
@@ -139,11 +152,26 @@ $( document ).ready(function() {
                     console.log(data);
                     $("#update_employee_modal").modal("hide");
                     // reload Users by using readRecords();
+                    
+
 //read list **************************** START
+//var rowindex = $('table tr').index(tr);
+var items=document.getElementById('myTableEmployees').rows
+
+var item=items[$('#modal_row').val()].cells
+item[0].innerHTML=$('#_id').val();
+item[1].innerHTML=$('#update_Name').val();
+item[2].innerHTML=$('#update_Address').val();
+item[3].innerHTML=$('#update_Salary').val();
+
+
+//productUpdateInTable(item);
 
 // reset table
 
-// read
+
+/*
+// read the table again
 $.ajax({
     url: "employees/list",
     dataType: "json",
@@ -159,12 +187,13 @@ $.ajax({
 .fail((err) => {
     console.log("Error");
 });  
-
+*/
 
 //read list **************************** END
 
 
                     //row.update();  // NOT Working
+                    console.log("row.update");
                      }
             })
             .fail((err) => {
@@ -175,7 +204,17 @@ $.ajax({
     });	  
     //-------------------------------------------------------END
 
+    function productUpdateInTable(item) {
+        // Find Product in <table>
+        var row =
+        getRowHtmlEmployees(item._id);
+        // Add changed product to table
+        $(row).after(getRowHtmlEmployees(item._id));
+        // Remove original product
+        $(row).remove();
 
+    }
+      
 
 function getRowHtmlEmployees(item) {
     var thtml = getTD(item._id) 
@@ -195,6 +234,7 @@ function getTD(val) {
 function getTR(val) {
     return '<tr>'+ val + '</tr>';
 }
+
 
 function getDelBtnEmployees(val) {
     return '<td><button style="color:red" type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordEmployee"><span class="fa fa-trash-alt"></span> Delete </button> ';
