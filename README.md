@@ -1,10 +1,15 @@
+# `About`
+
 Human Resources application dealing with the people and issues rela ted to people such as compensation and benefits, recruiting and hiring employees, onboarding employees, performance management, training, and organization devel opment and culture.
 
 
 ## Table of Contents
 
-1.  [Installation](#1-Installation)
-2.  [Running the Application](#2-Running-the-Application)
+[About](#0-About)
+
+1.  [Features](#1-Features)
+2.  [Installation](#1-Installation)
+3.  [Running the Application](#2-Running-the-Application)
 
 7.  [Issues](#7-Issues)
 8.  [Committee](#8-Committee)
@@ -13,7 +18,14 @@ Human Resources application dealing with the people and issues rela ted to peopl
 
 <br/><br/>
 
-# `1. Installation`
+# `1. Features`
+- Authentification
+- Import from csv, sql, PostgreSQL, MySQL, xls, JSON
+- Export to csv, sql, PostgreSQL, MySQL, xls, JSON
+- Profile comparaison
+
+
+# `2. Installation`
 ## Steps to Setup
 
 1. Install dependencies
@@ -28,7 +40,9 @@ npm install
 npm start
 ```
 
-## Git
+# `3. Git`
+
+```bash
 git init
 git add .
 git commit -m "employee script update info done !!"
@@ -36,44 +50,38 @@ git remote add origin https://github.com/tounsils/hr
 git push origin master
 
 git clone https://github.com/tounsils/hr
+```
 
 ### Create a new repository on the command line
-
+```bash
 git init
 git add .
 git commit -m "first uploaded files"
 git remote add origin https://github.com/tounsils/hr.git
 git push -u origin master
-
+```
 …or push an existing repository from the command line
 
+```bash
 git remote add origin https://github.com/tounsils/hr.git
 git push -u origin master
+```
 
-# `2. Running the Application`
+# `4. Running the Application`
 
-To run the application, open a command prompt and navigate to project directory. Run command as
+- To run the application, open a command prompt and navigate to project directory. Run command as
+```bash
 npm start
-
-
-If you are running for the first time, then before you run the start command, initialize the project with
+```
+- If you are running for the first time, then before you run the start command, initialize the project with
+```bash
 npm init
-	
-npm init
-
+```
 This will start the node server at port 6002 and you can access the application at url http://localhost:6002/
 
 # `7. Issues`
 
-## ![✔] import http from 'http'  // reported ERR!
 
-quick fix
-npm i @types/node
-
-// Replace 
-// import app from "./app"; 
-// with the following line :
-var app = require("./app");
 
 
 # `8. Committee`
@@ -83,6 +91,6 @@ guidance and future direction to the project.
 In addition, each member of the committee leads a project tracked under our Github projects.
 
 # `10. TODO`
-users is using views/static/js/employees.js
-routes/employees.js
-edit problem
+
+- Authentification system
+- Profile comparaison
