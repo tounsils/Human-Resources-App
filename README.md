@@ -5,15 +5,14 @@ Human Resources application dealing with the people and issues rela ted to peopl
 
 ## Table of Contents
 
-[About](#0-About)
-
+[About](#About)
 1.  [Features](#1-Features)
-2.  [Installation](#1-Installation)
-3.  [Running the Application](#2-Running-the-Application)
-
-7.  [Issues](#7-Issues)
-8.  [Committee](#8-Committee)
-10.  [TODO](#10-TODO)
+2.  [Installation](#2-Installation)
+3.  [Running the Application](#3-Running-the-Application)
+4.  [GIT](#4-GIT)
+5.  [Issues](#5-Issues)
+6.  [Committee](#6-Committee)
+7.  [TODO](#7-TODO)
 
 
 <br/><br/>
@@ -34,13 +33,20 @@ Human Resources application dealing with the people and issues rela ted to peopl
 npm install
 ```
 
-2. Run Server
+# `3. Running the Application`
 
+- To run the application, open a command prompt and navigate to project directory. Run command as
 ```bash
 npm start
 ```
+- If you are running for the first time, then before you run the start command, initialize the project with
+```bash
+npm init
+```
+This will start the node server at port 6002 and you can access the application at url http://localhost:6002/
 
-# `3. Git`
+
+# `4. GIT`
 
 ```bash
 git init
@@ -67,30 +73,18 @@ git remote add origin https://github.com/tounsils/hr.git
 git push -u origin master
 ```
 
-# `4. Running the Application`
-
-- To run the application, open a command prompt and navigate to project directory. Run command as
-```bash
-npm start
-```
-- If you are running for the first time, then before you run the start command, initialize the project with
-```bash
-npm init
-```
-This will start the node server at port 6002 and you can access the application at url http://localhost:6002/
-
-# `7. Issues`
+# `5. Issues`
 
 
 
 
-# `8. Committee`
+# `6. Committee`
 
 Meet the hr committee members - the people who work together to provide 
 guidance and future direction to the project. 
 In addition, each member of the committee leads a project tracked under our Github projects.
 
-# `10. TODO`
+# `7. TODO`
 
 - Authentification system
 - Profile comparaison
