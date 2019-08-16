@@ -27,24 +27,15 @@ Human Resources application dealing with the people and issues rela ted to peopl
 - Gallery
 - Advanced search
 
+# `3. Installation`
 
-# `1. Features`
-- Authentification
-- Import from csv, sql, PostgreSQL, MySQL, xls, JSON
-- Export to csv, sql, PostgreSQL, MySQL, xls, JSON
-- Profile comparaison
-
-
-# `2. Installation`
-## Steps to Setup
-
-1. Install dependencies
+Install dependencies
 
 ```bash
 npm install
 ```
 
-# `3. Running the Application`
+# `4. Running the Application`
 
 - To run the application, open a command prompt and navigate to project directory. Run command as
 ```bash
@@ -56,10 +47,10 @@ npm init
 ```
 This will start the node server at port 6002 and you can access the application at url http://localhost:6002/
 
-# `4. Testing`
+# `5. Testing`
 
 
-# `5. GIT`
+# `6. GIT`
 
 ```bash
 git init
@@ -86,24 +77,23 @@ git remote add origin https://github.com/tounsils/hr.git
 git push -u origin master
 ```
 
-# `6. Issues`
+# `7. Issues`
 
 
 
 
-# `7. Committee`
+# `8. Committee`
 
 Meet the hr committee members - the people who work together to provide 
 guidance and future direction to the project. 
 In addition, each member of the committee leads a project tracked under our Github projects.
 
-<<<<<<< HEAD
-# `8. Projects`
+# `9. Projects`
 
 
 
 
-# `9. TODO`
+# `10. TODO`
 
 - Authentification system
 - Profile comparaison
