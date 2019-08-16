@@ -1,4 +1,9 @@
-$( document ).ready(function() {
+if(document.URL.indexOf("users") >= 0){ 
+    // users, employees
+        console.log("users");
+        console.log(document.URL);
+
+        $( document ).ready(function() {
 
     //on page load keep the user list populated------------START
     $.ajax({
@@ -72,11 +77,12 @@ $( document ).ready(function() {
 
 });
 
+// _id, name, email, password, acl
+
 function getRowHtmlUsers(item) {
-    var thtml = getTD(item._id) 
-                + getTD(item.name) 
-                + getTD(item.address) 
-                + getTD(item.salary)
+    var thtml = getTD(item.name) 
+                + getTD(item.email) 
+                + getTD(item.acl)
                 + getDelBtnUsers(item._id);
     thtml = getTR(thtml);
     return thtml;
@@ -92,3 +98,6 @@ function getTR(val) {
 function getDelBtnUsers(val) {
     return '<td><button type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordUser"><span class="fa fa-trash-alt"></span> Delete </button></td>';
 }
+
+}
+

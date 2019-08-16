@@ -1,4 +1,9 @@
-$( document ).ready(function() {
+if(document.URL.indexOf("employees") >= 0){ 
+    // users, employees
+        console.log("employees");
+        console.log(document.URL);
+
+        $( document ).ready(function() {
 
     //on page load keep the employee list populated------------START
     $.ajax({
@@ -249,3 +254,5 @@ function getEditBtnEmployees(val) {
 
 
 });
+
+}
