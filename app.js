@@ -6,7 +6,7 @@ var hb = require("./config/handlebars");
 
 const mongoose = require( 'mongoose' );
 const path = require( 'path' );
-const cookie = require( 'cookie-parser' );
+const cookie = require( 'cookie-parser' ); //Error: Cannot find module 'cookie-parser' (Copied old version of node_modules folder)
 const jwt = require( 'jsonwebtoken' );
 
 var employees = require("./routes/employees");
@@ -32,7 +32,7 @@ app.use( cookie() );
 //make way for some custom css, js and images
 app.use('/custom/css', express.static(__dirname + '/views/static/css'));
 app.use('/custom/js', express.static(__dirname + '/views/static/js'));
-app.use('/custom/imgs', express.static(__dirname + '/views/static/imgs'));
+app.use('/custom/img', express.static(__dirname + '/views/static/img'));
 
 app.use(cors());
 app.use(bodyparser.json());
@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
      var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
     res.render( 'home', {
-        name: decoded.email
+        email: decoded.email
     } );
    
     //res.render('home');
@@ -79,16 +79,92 @@ app.get('/about', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
     res.render( 'about', {
-        name: decoded.email
+        email: decoded.email
     } );
 });
 
-//about 
+// contact
 app.get('/contact', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
     res.render( 'contact', {
-        name: decoded.email
+        email: decoded.email
+    } );
+});
+
+// projects
+app.get('/projects', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'projects', {
+        email: decoded.email
+    } );
+});
+// dashboard
+app.get('/dashboard', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'dashboard', {
+        email: decoded.email
+    } );
+});
+// reports
+app.get('/reports', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'reports', {
+        email: decoded.email
+    } );
+});
+// Careers
+app.get('/careers', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'careers', {
+        email: decoded.email,
+        name: decoded.name
+    } );
+});
+// Profile
+app.get('/profile', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'profile', {
+        email: decoded.email,
+        name: decoded.name,
+        id:decoded._id
+    } );
+});
+// notifications
+app.get('/notifications', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'notifications', {
+        email: decoded.email
+    } );
+});
+// Calendar
+app.get('/calendar', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'calendar', {
+        email: decoded.email
+    } );
+});
+// Messages
+app.get('/messages', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'messages', {
+        email: decoded.email
+    } );
+});
+// Settings
+app.get('/settings', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'settings', {
+        email: decoded.email
     } );
 });
 
@@ -98,7 +174,7 @@ app.get('/users', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
     res.render( 'users', {
-        name: decoded.email
+        email: decoded.email
     } );
 });
 
@@ -108,9 +184,14 @@ app.get('/employees', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
     res.render( 'employees', {
-        name: decoded.email
+        email: decoded.email
     } );
 });
+
+//app.use("/exportemployeestocsv", employees);
+//exportemployeestocsv route
+
 app.use( users);
+app.use( employees);
 
 module.exports = app;

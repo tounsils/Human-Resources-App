@@ -57,6 +57,9 @@ if(document.URL.indexOf("employees") >= 0){
     //on click of delete record----------------------------START
     $(document).on("click", ".btn-del-recordEmployee", function(event) { 
 
+        var conf = confirm("Are you sure, do you really want to delete User?");
+        if (conf == true) {
+
         //identify the row which we will remove from our table.
         var row = $(this).parent().parent();
 
@@ -74,6 +77,8 @@ if(document.URL.indexOf("employees") >= 0){
         .fail((err) => {
             console.log("Error");
         });
+    }
+    
     });	
     //-------------------------------------------------------END
 
@@ -101,7 +106,7 @@ if(document.URL.indexOf("employees") >= 0){
                //console.log(employee.docs.name);
                $("#update_Name").val(employee.docs.name);
                $("#update_Address").val(employee.docs.address);
-               $("#update_Salary").val(employee.docs.salary);
+               $("#update_Jobtitle").val(employee.docs.jobtitle);
                $("#_id").val(employee.docs._id);
    
                // Open modal popup
@@ -148,7 +153,7 @@ if(document.URL.indexOf("employees") >= 0){
                 url: 'employees/update',
                 data: {name: $('#update_Name').val(),
                 address: $('#update_Address').val(),
-                salary: $('#update_Salary').val(),
+                jobtitle: $('#update_Jobtitle').val(),
                 id: $('#_id').val()},
                 type: 'POST'
             })
@@ -163,36 +168,14 @@ if(document.URL.indexOf("employees") >= 0){
 //var rowindex = $('table tr').index(tr);
 var items=document.getElementById('myTableEmployees').rows
 
-var item=items[$('#modal_row').val()].cells
-item[0].innerHTML=$('#_id').val();
-item[1].innerHTML=$('#update_Name').val();
-item[2].innerHTML=$('#update_Address').val();
-item[3].innerHTML=$('#update_Salary').val();
+var item=items[$('#modal_row').val()].cells;
+//item[0].innerHTML=$('#_id').val();
+item[0].innerHTML=$('#update_Name').val();
+item[1].innerHTML=$('#update_Address').val();
+item[2].innerHTML=$('#update_Jobtitle').val();
 
 
-//productUpdateInTable(item);
 
-// reset table
-
-
-/*
-// read the table again
-$.ajax({
-    url: "employees/list",
-    dataType: "json",
-})
-.done((data) => {
-    if(data) {
-        var odata = $.parseJSON(JSON.stringify(data.docs));
-        odata.forEach(item => {
-            $('#myTableEmployees > tbody:last-child').append(getRowHtmlEmployees(item));
-        });
-    }
-})
-.fail((err) => {
-    console.log("Error");
-});  
-*/
 
 //read list **************************** END
 
@@ -222,10 +205,10 @@ $.ajax({
       
 
 function getRowHtmlEmployees(item) {
-    var thtml = getTD(item._id) 
-                + getTD(item.name) 
+    var thtml =  
+                getTD(item.name) 
                 + getTD(item.address) 
-                + getTD(item.salary)
+                + getTD(item.jobtitle)
                 + getDelBtnEmployees(item._id)
                 + getEditBtnEmployees(item._id);
     thtml = getTR(thtml);
@@ -242,7 +225,7 @@ function getTR(val) {
 
 
 function getDelBtnEmployees(val) {
-    return '<td><button style="color:red" type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordEmployee"><span class="fa fa-trash-alt"></span> Delete </button> ';
+    return '<td><button style="color:red" type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordEmployee"><span class="fa fa-trash"></span> Delete </button> ';
 }
 
 // Just added

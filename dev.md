@@ -19,3 +19,49 @@ var user = new User( {
 user.save();
 ```
 
+# error: Pulling is not possible because you have unmerged files.
+
+git fetch origin
+git reset --hard origin/master
+git pull
+
+Explanation:
+
+    Fetch will download everything from another repository, in this case, the one marked as "origin".
+    Reset will discard changes and revert to the mentioned branch, "master" in repository "origin".
+    Pull will just get everything from a remote repository and integrate.
+
+# Cannot GET /exportemployeestocsv
+
+
+# Error: Cannot find module 'cookie-parser'
+npm install cookie-parser
+
+# add field in doc
+files to edit :
+- routes/employee.js
+    - router.post("/add", (req, res, next) => { ....
+    - router.post('/update', (req, res, next) => { ....
+- schema/Employee.js
+    - const employeeSchema = new Schema({ ....
+- views/employees.hbs
+    - <label for="input....
+    - <input type="....
+    - <!-- Modal - Update Employee details --> ...
+- views/static/js/employees.js
+    - //on EditBtnEmployees click ....
+    - $("#update_ new field
+    - //on update employee submit the form 
+    - ajax
+    - //read list 
+    - item[??].innerHTML=$('#update_ new field').val();
+    - function getRowHtmlEmployees(item) { ...
+    - + getTD(item. new field)
+
+
+
+# validation
+https://express-validator.github.io/docs/
+
+
+

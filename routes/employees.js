@@ -1,6 +1,7 @@
 var express = require("express");
 var Employee = require("../schema/Employee");
 var mongoose = require("mongoose");
+var csv      = require('csv-express');
 
 const router = express.Router();
 
@@ -9,6 +10,21 @@ router.get("/employees", (req, res, next) => {
         message:"Serving Employees on the Endpoint."
     });   
 });
+
+router.get('/exportemployeestocsv', function(req, res, next) {
+    var filename   = "employees.csv";
+    var dataArray;
+    Employee.find().lean().exec({}, function(err, employees) {
+        if (err) res.send(err);
+        
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/csv');
+        res.setHeader("Content-Disposition", 'attachment; filename='+filename);
+        res.csv(employees, true);
+    });
+ });
+module.exports = router;
+
 
 router.get("/list", (req, res, next) => {
     Employee.find({})
@@ -46,7 +62,7 @@ router.post("/add", (req, res, next) => {
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
         address:req.body.address,
-        salary: req.body.salary
+        jobtitle: req.body.jobtitle
     });
 
     employee.save()
@@ -82,7 +98,7 @@ router.post('/update', (req, res, next) => {
     const Newemployee = new Employee({
         name: req.body.name,
         address:req.body.address,
-        salary: req.body.salary
+        jobtitle: req.body.jobtitle
     });
     //console.log(Newemployee);
 

@@ -6,6 +6,9 @@ const bcrypt = require( 'bcrypt' );
 const jwt = require( 'jsonwebtoken' );
 
 const router = express.Router();
+const { body } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
+const { validationResult } = require('express-validator');
 
 // Login page
 router.get( '/login', async ( req, res ) => {
@@ -32,7 +35,8 @@ router.post( '/login', async ( req, res ) => {
     // Create JWT
     var token = await jwt.sign( { 
         _id: user._id.toString(),
-        email: user.email
+        email: user.email,
+        name: user.name
     }, 'my-token-key' );
 
     // Save JWT to cookie
@@ -41,6 +45,17 @@ router.post( '/login', async ( req, res ) => {
     // Send destinated url to client
     res.send( { url: 'http://localhost:6002' } );
 } );
+
+router.get('/logout', function(req, res){
+    cookie = req.cookies;
+    for (var prop in cookie) {
+        if (!cookie.hasOwnProperty(prop)) {
+            continue;
+        }    
+        res.cookie(prop, '', {expires: new Date(0)});
+    }
+    res.redirect('/login');
+});
 
 
 router.get("/users", (req, res, next) => {
@@ -61,10 +76,40 @@ router.get("/list", (req, res, next) => {
             console.log(err)
         });
 });
+//    var user = await User.findOne( { email: req.body.email } );
+
+router.post("/findOne", (req, res, next) => {
+    const rid = req.body.id;
+    //console.log('route/findOne');
+    console.log(rid);
+    User.findById(rid)
+        .exec()
+        .then(docs => {
+            res.status(200).json({
+                docs
+            });
+        })
+        .catch(err => {
+            console.log(err)
+        });
+});
+
 
 // _id, name, email, password, acl
 
-router.post("/add", (req, res, next) => {
+router.post("/add", [
+    body('email')
+      .isEmail()
+      .normalizeEmail(),
+    body('acl')
+      .not().isEmpty()
+      .trim()
+      .escape(),
+    sanitizeBody('notifyOnReply').toBoolean()
+  ], 
+  (req, res, next) => {
+
+
 
     const user = new User({
         _id: mongoose.Types.ObjectId(),
@@ -74,6 +119,8 @@ router.post("/add", (req, res, next) => {
         acl: req.body.acl
     });
 
+    
+
     user.save()
     .then(result => {
         res.status(200).json({
@@ -82,8 +129,21 @@ router.post("/add", (req, res, next) => {
     })
     .catch(err => {
         console.log(err);
+        //const errors = myValidationResult(req).array();
+        alert(err);
+
+
     });
 });
+
+const myValidationResult = validationResult.withDefaults({
+    formatter: (error) => {
+      return {
+        myLocation: error.location,
+      };
+    }
+  });
+  
 
 router.post("/delete", (req, res, next) => {
     const rid = req.body.id;

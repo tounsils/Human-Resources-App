@@ -1,4 +1,4 @@
-if(document.URL.indexOf("users") >= 0){ 
+if(document.URL.indexOf("profile") >= 0){ 
     // users, employees
         console.log("users");
         console.log(document.URL);
@@ -6,16 +6,36 @@ if(document.URL.indexOf("users") >= 0){
         $( document ).ready(function() {
 
     //on page load keep the user list populated------------START
+
+    /*
+            $.ajax({
+            url: 'employees/findOne',
+            data: { id:this.id },
+            type: 'POST'
+        })
+        .done((data) => {
+            if(data) {
+               console.log(data);
+               var employee = JSON.parse(JSON.stringify(data))
+               $("#update_Name").val(employee.docs.name);
+
+               */
+              //console.log($('#userid').val());
     $.ajax({
-        url: "users/list",
-        dataType: "json",
-    })
+        url: 'users/findOne',
+        data: { id:$('#userid').val() },
+        type: 'POST'
+
+})
     .done((data) => {
         if(data) {
-            var odata = $.parseJSON(JSON.stringify(data.docs));
-            odata.forEach(item => {
-                $('#myTableUsers > tbody:last-child').append(getRowHtmlUsers(item));
-            });
+            console.log(data);
+            var employee = $.parseJSON(JSON.stringify(data.docs));
+            //var employee = JSON.parse(JSON.stringify(data))
+           console.log(employee);
+            //employee.forEach(item => {
+                $('#myTableUsers > tbody:last-child').append(getRowHtmlUsers(employee));
+            //});
         }
     })
     .fail((err) => {
@@ -100,8 +120,25 @@ function getTR(val) {
 }
 
 function getDelBtnUsers(val) {
-    return '<td><button type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordUser"><span class="fa fa-trash-alt"></span> Delete </button></td>';
+    return '<td><button disabled  type="button" id='+ val +' class="btn btn-default btn-sm btn-del-recordUser"><span class="fa fa-trash-alt"></span> Delete </button></td>';
 }
 
 }
 
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  

@@ -6,7 +6,9 @@ const employeeSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
     address: String,
-    salary : Number
+    email: String,
+    phone: String,
+    jobtitle : String
 });
 
 // We are using appemployees collection inside 
