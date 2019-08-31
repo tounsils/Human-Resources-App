@@ -64,7 +64,7 @@ $ npm test
 ```bash
 git init
 git add .
-git commit -m "employee script update info done !!"
+git commit -m "user profile processing !!"
 git remote add origin https://github.com/tounsils/hr
 git push origin master
 

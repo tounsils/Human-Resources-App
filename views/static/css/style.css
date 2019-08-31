@@ -174,7 +174,7 @@ body > .container {
         margin: 0 2px;
         line-height: 30px;
         border-radius: 2px !important;
-        text-align: left;
+        text-align: center;
         padding: 0 6px;
     }
     .pagination li a:hover {
@@ -331,7 +331,7 @@ body > .container {
 	}
 	.navbar .nav > li > a > i {
 		display: block;
-		text-align: left;
+		text-align: center;
 	}
 	.navbar .dropdown-item i {
 		font-size: 16px;
@@ -397,7 +397,7 @@ body > .container {
 	@media (max-width: 1199px){
 		.navbar .nav > li > a > i {
 			display: inline-block;			
-			text-align: left;
+			text-align: center;
 			min-width: 30px;
 			position: relative;
 			top: 4px;
