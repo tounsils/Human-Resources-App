@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
    
 } );
 
-//about 
+// about 
 app.get('/about', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
@@ -169,7 +169,7 @@ app.get('/settings', (req, res) => {
 });
 
 app.use("/users", users);
-//Home users route
+// Home users route
 app.get('/users', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
@@ -179,7 +179,7 @@ app.get('/users', (req, res) => {
 });
 
 app.use("/employees", employees);
-//employees route
+// employees route
 app.get('/employees', (req, res) => {
     var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
 
