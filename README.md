@@ -20,7 +20,7 @@ Human Resources application dealing with the people and issues rela ted to peopl
 13.  [License (MIT)](#13-License-(MIT))
 
 
-<br/><br/>
+<br/>
 
 # `2. Features`
 - Security (Authentification system, injection prevention, ...)
