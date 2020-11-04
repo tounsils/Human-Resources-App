@@ -23,10 +23,10 @@ Human Resources application dealing with the people and issues rela ted to peopl
 <br/>
 
 # `2. Features`
-- Security (Authentification system, injection prevention, ...)
+- Security (Authentication system, injection prevention, ...)
 - Import from csv, sql, PostgreSQL, MySQL, xls, JSON
 - Export to csv, sql, PostgreSQL, MySQL, xls, JSON
-- Profile comparaison
+- Profile comparison
 - Gallery
 - Advanced search
 
@@ -104,8 +104,8 @@ In addition, each member of the committee leads a project tracked under our Gith
 
 # `10. TODO`
 
-- Authentification system
-- Profile comparaison
+- Authentication system
+- Profile comparison
 - Gallery
 - Advanced search
 - 
