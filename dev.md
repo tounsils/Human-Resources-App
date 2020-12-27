@@ -39,7 +39,7 @@ npm install cookie-parser
 
 # add field in doc
 files to edit :
-- routes/employee.js
+- routes/Employee.js
     - router.post("/add", (req, res, next) => { ....
     - router.post('/update', (req, res, next) => { ....
 - schema/Employee.js

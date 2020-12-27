@@ -1,6 +1,6 @@
 # `About`
 
-Human Resources application dealing with the people and issues rela ted to people such as compensation and benefits, recruiting and hiring employees, onboarding employees, performance management, training, and organization devel opment and culture.
+Human Resources application dealing with the people and issues related to people such as compensation and benefits, recruiting and hiring employees, onboarding employees, performance management, training, and organization devel opment and culture.
 
 
 ## Table of Contents
@@ -32,7 +32,22 @@ Human Resources application dealing with the people and issues rela ted to peopl
 
 # `3. Installation`
 
-Install dependencies
+### installing mongodb
+see https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04
+
+
+### a- Creating our Mongoose model
+
+On your terminal, run:
+
+```bash
+yarn add mongoose or npm install --save mongoose
+```
+
+I chose mongoose for this tutorial. But you can, of course, choose any package you want to deal with MongoDB.
+
+### b- Install dependencies:
+
 
 ```bash
 npm install
