@@ -123,7 +123,7 @@ body > .container {
 		padding: 5px 16px;
 		border-radius: 0;
 		border: none;
-		box-shadow: 0 0 4px rgba(0,0,0,.1);
+		/* box-shadow: 0 0 4px rgba(0,0,0,.1); */
     }
     .navbar .badge {
 		background: #f44336;
@@ -223,7 +223,7 @@ body > .container {
         padding: 20px 25px;
         margin: 30px 0;
 		border-radius: 3px;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        /* box-shadow: 0 1px 1px rgba(0,0,0,.05); */
     }
 	.table-title {
 		background: #435d7d;
@@ -346,7 +346,7 @@ body > .container {
 	.navbar .dropdown-menu {
 		border-radius: 1px;
 		border-color: #e5e5e5;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
+		/* box-shadow: 0 2px 8px rgba(0,0,0,.05); */
 	}
 	.navbar .dropdown-menu li a {
 		color: #777 !important;
@@ -379,7 +379,7 @@ body > .container {
 		background: #faf7fd;
 		border-radius: 1px;
 		border-color: #faf7fd;
-		box-shadow: 0 2px 8px rgba(0,0,0,.05);
+		/* box-shadow: 0 2px 8px rgba(0,0,0,.05); */
 	}
 	.navbar .divider {
 		background-color: #e9ecef !important;
@@ -421,7 +421,7 @@ body > .container {
     }
     
     .footer {
-        position: absolute;
+		/* position: absolute; */
         bottom: 0;
         width: 100%;
         /* Set the fixed height of the footer here */

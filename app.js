@@ -188,6 +188,17 @@ app.get('/employees', (req, res) => {
     } );
 });
 
+// Careers
+app.get('/help', (req, res) => {
+    var decoded = jwt.verify( req.cookies['my-token'], 'my-token-key' );
+
+    res.render( 'help', {
+        email: decoded.email,
+        name: decoded.name
+    } );
+});
+
+
 //app.use("/exportemployeestocsv", employees);
 //exportemployeestocsv route
 
