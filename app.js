@@ -20,7 +20,7 @@ app.engine("hbs", hb);
 app.set("view engine","hbs");
 // By default, hbs templates are located in Views folder, we use Templates folder instead, that's why we need this line
 //app.set( 'views', path.join( __dirname, 'views' ) );
-// Set location for statis resources
+// Set location for static resources
 //app.use( express.static( path.join( __dirname, 'views\static\js' ) ) );
 
 // Able to read req.body in JSON format
