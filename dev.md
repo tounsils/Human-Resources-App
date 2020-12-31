@@ -4,7 +4,8 @@
 - implemented CRUD routes in your Express app which leverage your Mongoose data model, rendering your app fully dynamic.
 
 # update npm
-npm install -g npm@latest
+sudo npm install -g npm@latest
+Use npm update to perform safe dependency upgrades
 
 # Testing login
 to create test user, just use the following code in (user route), after created users, please commented out these lines:
