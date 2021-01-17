@@ -2,6 +2,10 @@ var express = require("express");
 var Employee = require("../schema/Employee");
 var mongoose = require("mongoose");
 var csv      = require('csv-express');
+var fs = require('fs'); //Added for file upload
+var multer = require('multer'); //Added for file upload
+require('dotenv/config'); //Added for file upload
+const path = require( 'path' );
 
 const router = express.Router();
 
@@ -62,7 +66,10 @@ router.post("/add", (req, res, next) => {
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
         address:req.body.address,
-        jobtitle: req.body.jobtitle
+        email:req.body.email,
+        phone:req.body.phone,
+        jobtitle: req.body.jobtitle,
+        img: req.body.img
     });
 
     employee.save()
@@ -98,7 +105,13 @@ router.post('/update', (req, res, next) => {
     const Newemployee = new Employee({
         name: req.body.name,
         address:req.body.address,
-        jobtitle: req.body.jobtitle
+        email:req.body.email,
+        phone:req.body.phone,
+        jobtitle: req.body.jobtitle,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
     });
     //console.log(Newemployee);
 

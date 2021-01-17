@@ -8,7 +8,12 @@ const employeeSchema = new Schema({
     address: String,
     email: String,
     phone: String,
-    jobtitle : String
+    jobtitle : String,
+    image:
+        {
+            data: Buffer,
+            contentType: String
+        }
 });
 
 // We are using appemployees collection inside 

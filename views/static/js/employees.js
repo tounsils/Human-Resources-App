@@ -106,7 +106,10 @@ if(document.URL.indexOf("employees") >= 0){
                //console.log(employee.docs.name);
                $("#update_Name").val(employee.docs.name);
                $("#update_Address").val(employee.docs.address);
-               $("#update_Jobtitle").val(employee.docs.jobtitle);
+                $("#update_email").val(employee.docs.email);
+                $("#update_phone").val(employee.docs.phone);
+               $("#update_image").val(employee.docs.image);
+                $("#update_Jobtitle").val(employee.docs.jobtitle);
                $("#_id").val(employee.docs._id);
    
                // Open modal popup
@@ -152,9 +155,12 @@ if(document.URL.indexOf("employees") >= 0){
             $.ajax({
                 url: 'employees/update',
                 data: {name: $('#update_Name').val(),
-                address: $('#update_Address').val(),
-                jobtitle: $('#update_Jobtitle').val(),
-                id: $('#_id').val()},
+                    address: $('#update_Address').val(),
+                    jobtitle: $('#update_Jobtitle').val(),
+                    email: $('#update_email').val(),
+                    phone: $('#update_phone').val(),
+                    image: $('#update_image').val(),
+                    id: $('#_id').val()},
                 type: 'POST'
             })
             .done((data) => {
@@ -170,12 +176,12 @@ var items=document.getElementById('myTableEmployees').rows
 
 var item=items[$('#modal_row').val()].cells;
 //item[0].innerHTML=$('#_id').val();
-item[0].innerHTML=$('#update_Name').val();
-item[1].innerHTML=$('#update_Address').val();
-item[2].innerHTML=$('#update_Jobtitle').val();
-
-
-
+                    item[0].innerHTML=$('#update_Name').val();
+                    item[1].innerHTML=$('#update_Address').val();
+                    item[2].innerHTML=$('#update_email').val();
+                    item[3].innerHTML=$('#update_phone').val();
+                    item[4].innerHTML=$('#update_image').val();
+                    item[5].innerHTML=$('#update_Jobtitle').val();
 
 //read list **************************** END
 

@@ -10,6 +10,11 @@ Use npm update to perform safe dependency upgrades
 # Testing login
 to create test user, just use the following code in (user route), after created users, please commented out these lines:
 
+# Mongodb
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04
+sudo systemctl status mongodb
+
+
 
 ```bash
 var user = new User( {
@@ -20,11 +25,12 @@ var user = new User( {
 user.save();
 ```
 
-# error: Pulling is not possible because you have unmerged files.
+# Errors
+## error: Pulling is not possible because you have unmerged files.
 
-git fetch origin
-git reset --hard origin/master
-git pull
+    git fetch origin
+    git reset --hard origin/master
+    git pull
 
 Explanation:
 
@@ -32,14 +38,14 @@ Explanation:
     Reset will discard changes and revert to the mentioned branch, "master" in repository "origin".
     Pull will just get everything from a remote repository and integrate.
 
-# Cannot GET /exportemployeestocsv
+## Cannot GET /exportemployeestocsv
 
 
-# Error: Cannot find module 'cookie-parser'
-npm install cookie-parser
+## Error: Cannot find module 'cookie-parser'
+    npm install cookie-parser
 
 # add field in doc
-files to edit :
+Files to edit :
 - routes/Employee.js
     - router.post("/add", (req, res, next) => { ....
     - router.post('/update', (req, res, next) => { ....
@@ -64,5 +70,7 @@ files to edit :
 # validation
 https://express-validator.github.io/docs/
 
-
+# ToDo
+## Multiple files upload
+https://bezkoder.com/node-js-upload-multiple-files/
 

@@ -5,13 +5,23 @@ var db = require("./config/database");
 var hb = require("./config/handlebars");
 
 const mongoose = require( 'mongoose' );
-const path = require( 'path' );
 const cookie = require( 'cookie-parser' ); //Error: Cannot find module 'cookie-parser' (Copied old version of node_modules folder)
 const jwt = require( 'jsonwebtoken' );
 
 var employees = require("./routes/employees");
 var users = require("./routes/users");
+const multer = require("multer");
 //var login = require("./routes/login");
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
 
 const app = express();
 
