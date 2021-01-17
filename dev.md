@@ -7,13 +7,13 @@
 sudo npm install -g npm@latest
 Use npm update to perform safe dependency upgrades
 
-# Testing login
-to create test user, just use the following code in (user route), after created users, please commented out these lines:
 
 # Mongodb
 https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04
 sudo systemctl status mongodb
 
+# Testing login
+to create test user, just use the following code in (user route), after created users, please commented out these lines:
 
 
 ```bash
