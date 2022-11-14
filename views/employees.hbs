@@ -1,4 +1,7 @@
 <!-- views\employees.hbs -->
+<h1 class="mt-5">Employees</h1>
+
+<a href="/exportemployeestocsv">Export Employees to csv</a> <br><br>
 
 <!-- Begin page content -->
 <div class="row">
@@ -17,9 +20,9 @@
     </div>
   </div>
    <div class="form-group row">
-    <label for="inputSalary" class="col-sm-2 col-form-label">Salary</label>
+    <label for="inputJobtitle" class="col-sm-2 col-form-label">Job title</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputSalary" name="salary" placeholder="50000">
+      <input type="text" class="form-control" id="inputJobtitle" name="jobtitle" placeholder="CTO">
     </div>
   </div>
   <div class="form-group row">
@@ -34,10 +37,9 @@
   <table class="table" id="myTableEmployees">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Address</th>
-      <th scope="col">Salary</th>
+      <th scope="col">Job title</th>
       <th scope="col">&nbsp;</th>
     </tr>
   </thead>
@@ -57,6 +59,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title" id="myModalLabel">Update</h4>
             </div>
+            Collapsibles/Accordion
             <div class="modal-body">
  
                 <div class="form-group">
@@ -68,13 +71,29 @@
                     <label for="update_Address">Address</label>
                     <input type="text" id="update_Address" placeholder="Address" class="form-control"/>
                 </div>
- 
+                <div class="form-group">
+                    <label for="update_email">Email</label>
+                    <input type="text" id="update_email" placeholder="email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="update_phone">Phone</label>
+                    <input type="text" id="update_phone" placeholder="phone" class="form-control"/>
+                </div>
+
 
 
                 <div class="form-group">
-                    <label for="update_Salary">Salary</label>
-                    <input type="text" id="update_Salary" placeholder="Salary" class="form-control"/>
+                    <label for="update_Jobtitle">Job title</label>
+                    <input type="text" id="update_Jobtitle" placeholder="Jobtitle" class="form-control"/>
                 </div>
+
+
+                <div class="form-group">
+                    <label for="image">Upload Image</label>
+                    <input type="file" id="image"
+                           name="image" value="" required>
+                </div>
+
  
             </div>
             <div class="modal-footer">
@@ -87,3 +106,7 @@
     </div>
 </form>
 </div>
+
+<!-- Modal - Update Employee details END -->
+
+

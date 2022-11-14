@@ -1,0 +1,51 @@
+<!-- Begin page content -->
+<h1 class="mt-5">Profile</h1>
+<p>
+hi <b> {{name}} </b></p>
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'About')" id="defaultOpen">About</button>
+  <button class="tablinks" onclick="openCity(event, 'Social')">Social</button>
+  <button class="tablinks" onclick="openCity(event, 'More')">More ...</button>
+</div>
+
+<div id="About" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <h3>About</h3>
+<br>
+<br>
+
+<div class="col-md-8">
+  <table class="table" id="myTableUsers">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">email</th>
+      <th scope="col">acl</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>    
+  </tbody>
+</table>
+</div>
+
+<br>
+<br>
+<br><br><br><br><br>
+
+</div>
+
+<div id="Social" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <h3>Social</h3>
+  <p>SocialSocialSocialSocialSocialSocial.</p> 
+</div>
+
+<div id="More" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+  <h3>More</h3>
+  <p>MoreMoreMoreMoreMoreMore.</p>
+</div>

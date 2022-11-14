@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">   
+    <meta name="author" content="">
     <link rel="icon" href="">
 
     <title>Human Resources</title>
@@ -13,41 +13,79 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="/custom/css/starter-template.css" type="text/css" rel="stylesheet">
+    <!--     <link href="/custom/css/starter-template.css" type="text/css" rel="stylesheet">  -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-  </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <body>
+    <!-- Jquery JS file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JS file -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/">Human Resources</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <link rel="stylesheet" href="/custom/css/style.css">
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/users">Users <span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/employees">Employees <span class="sr-only"></span></a>
-          </li>
+</head>
 
-           <li class="nav-item active">
-            <a class="nav-link" href="/about">About <span class="sr-only"></span></a>
-          </li>
-           <li class="nav-item active">
-            <a class="nav-link" href="/contact">Contact <span class="sr-only"></span></a>
-          </li>
-         
+<body>
+
+<nav class="navbar navbar-default navbar-expand-xl navbar-light">
+
+    <div class="navbar-header d-flex col">
+        <a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Human <b>Res</b> v1.0</a>
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+            <span class="navbar-toggle-icon"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+
+        <form class="navbar-form form-inline">
+            <div class="input-group search-box">
+                <input type="text" id="search" class="form-control" placeholder="Search here...">
+                <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+            </div>
+        </form>
+
+        <ul class="navbar navbar-expand-lg navbar-light  ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li class="nav-item"><a href="/users" class="nav-link"><i class="fa fa-users"></i><span>Users</span></a></li>
+            <li class="nav-item"><a href="/employees" class="nav-link"><i class="fa fa-users"></i><span>Employees</span></a></li>
+            <li class="nav-item"><a href="/projects" class="nav-link"><i class="fa fa-gears"></i><span>Projects</span></a></li>
+            <li class="nav-item"><a href="/reports" class="nav-link"><i class="fa fa-pie-chart"></i><span>Reports</span></a></li>
+            <li class="nav-item"><a href="/dashboard" class="nav-link"><i class="fa fa-tachometer" aria-hidden="true"></i><span>dashboard</span></a></li>
+            <li class="nav-item"><a href="/careers" class="nav-link"><i class="fa fa-briefcase"></i><span>Careers</span></a></li>
+
+            <li class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="/custom/img/Emoji_Oreo.png" class="avatar" alt="Avatar"> {{email}} </a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="/profile" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                    <li class="nav-item"><a href="/notifications" class="dropdown-item"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+                    <li><a href="/calendar" class="dropdown-item"><i class="fa fa-calendar-o"></i>Calendar</a></li>
+                    <li class="nav-item"><a href="/messages" class="dropdown-item"><i class="fa fa-envelope"></i><span>Messages</span><span class="badge">5</span></a></li>
+                    <li><a href="/settings" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+
+                    <li class="divider dropdown-divider"></li>
+                    <li class="nav-item"><a href="/about" class="dropdown-item"><span>About</span></a></li>
+                    <li class="nav-item"><a href="/contact" class="dropdown-item"><span>Contact</span></a></li>
+
+                    <li class="divider dropdown-divider"></li>
+
+                    <li><a href="/logout" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></li>
+
+                </ul>
+            </li>
+            <li class="nav-item"><a href="/help" class="nav-link"><i class="fa fa-question-circle"></i></a></li>
+
+
         </ul>
-        
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <main role="main" class="container">
+<input id=userid hidden value="{{id}}">
+<main role="main" class="container">
